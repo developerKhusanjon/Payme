@@ -1,5 +1,6 @@
 package dev.khusanjon.payme.controller;
 
+import dev.khusanjon.payme.domain.Detail;
 import dev.khusanjon.payme.domain.Order;
 import dev.khusanjon.payme.holder.SpecialOrder;
 import dev.khusanjon.payme.service.OrderService;
@@ -23,7 +24,7 @@ public class OrderController {
         return orderService.ordersWithoutDetail();
     }
 
-    @GetMapping("/orders_without_invoices")
+    @GetMapping("/orders_without_invoices")/***/
     public List<Map<String,?>> getOrdersWithoutInvoices(){
         return orderService.ordersWithoutInvoices();
     }
@@ -33,8 +34,8 @@ public class OrderController {
         return orderService.makeOrder(specialOrder);
     }
 
-    @GetMapping("order/details")
-    public Map<String,?>  getOrderDetails(@RequestParam Integer order_id){
+    @GetMapping("/order/details")
+    public List<Detail>  getOrderDetails(@RequestParam Integer order_id){
         return orderService.orderDetails(order_id);
     }
 }

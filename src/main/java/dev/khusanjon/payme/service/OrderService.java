@@ -1,4 +1,5 @@
 package dev.khusanjon.payme.service;
+import dev.khusanjon.payme.domain.Detail;
 import dev.khusanjon.payme.domain.Invoice;
 import dev.khusanjon.payme.domain.Order;
 import dev.khusanjon.payme.holder.SpecialOrder;
@@ -65,16 +66,7 @@ public class OrderService {
         return Map.of("status",status_string,"invoice_number",invoice_number);
     }
 
-    public Map<String,?> orderDetails(Integer order_id){
-        Order order = null;
-        String product_name = null;
-
-        if (orderRepository.findById(order_id).isPresent()){
-            order = orderRepository.findById(order_id).get();
-            product_name = order.getDetails().stream().filter(detail ->
-                                detail.getOrder().getId().equals(order_id)).findFirst().get().getProduct().getName();
-        }
-
-        return Map.of("order_detail",order,"product_name",product_name);
+    public List<Detail> orderDetails(Integer order_id){
+       return orderRepository.findById(order_id).get().getDetails();
     }
 }

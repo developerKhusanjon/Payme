@@ -24,7 +24,7 @@ public class DetailService {
                 .collect(groupingBy(identity(), counting()))
                 .entrySet().stream()
                 .filter(detailLongEntry -> detailLongEntry.getValue()>10)
-                .map(detailLongEntry -> Map.of("Product_code",detailLongEntry.getKey().getProduct().getProduct_code(),
+                .map(detailLongEntry -> Map.of("Product_code",detailLongEntry.getKey().getProduct()!=null?detailLongEntry.getKey().getProduct().getProduct_code():"null",
                                                 "Total_order_number",detailLongEntry.getValue()))
                 .collect(Collectors.toList());
     }
@@ -32,8 +32,8 @@ public class DetailService {
     public List<Map<String,?>> bulkProducts(){
         return detailRepository.findAll().stream()
                 .filter(detail -> detail.getQuantity()>=8)
-                .map(detail -> Map.of("Product_code",detail.getProduct().getProduct_code(),
-                                        "Product_price",detail.getProduct().getPrice()))
+                .map(detail -> Map.of("Product_code",detail.getProduct()!=null?detail.getProduct().getProduct_code():"null",
+                                        "Product_price",detail.getProduct()!=null?detail.getProduct().getPrice():"null"))
                 .collect(Collectors.toList());
     }
 }

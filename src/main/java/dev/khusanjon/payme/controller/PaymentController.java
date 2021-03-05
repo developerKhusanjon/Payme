@@ -22,7 +22,7 @@ public class PaymentController {
         return paymentService.overpaidInvoices();
     }
 
-    @PostMapping("/payment")
+    @PostMapping("/payment")/***/
     public Map<String,?> makePayment(@RequestBody Map<String,Integer> inv_id){
         return paymentService.makePayment(inv_id);
     }

@@ -7,10 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import static java.util.function.Function.identity;
@@ -34,7 +31,7 @@ public class CustomerService {
 
         return customerRepository.findAll().stream()
                 .filter(customer ->
-                    customer.getOrders().stream().anyMatch(order ->
+                    customer.getOrders().stream().allMatch(order ->
                         order.getDate().compareTo(d1) < 0 && order.getDate().compareTo(d2) > 0)).collect(Collectors.toList());
     }
 

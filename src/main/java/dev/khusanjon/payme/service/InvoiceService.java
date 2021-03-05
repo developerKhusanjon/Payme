@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import static java.util.stream.Collectors.groupingBy;
 
 @Service
 public class InvoiceService {
@@ -29,7 +28,7 @@ public class InvoiceService {
         return invoiceRepository.findAll().stream()
                 .filter(invoice ->
                         invoice.getIssued().compareTo(invoice.getDue())<0)
-                            .map(invoice -> new WrongInvoice(invoice.getId(),invoice.getIssued(),invoice.getOrder().getId())).collect(Collectors.toList());
+                            .map(invoice -> new WrongInvoice(invoice.getId(),invoice.getIssued(),invoice.getOrder()!=null?invoice.getOrder().getId():null)).collect(Collectors.toList());
     }
 
     public Invoice saveInvoice(Invoice invoice){

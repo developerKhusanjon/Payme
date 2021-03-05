@@ -1,9 +1,13 @@
 package dev.khusanjon.payme.domain;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 
 @Entity
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,property = "id")
 public class Detail {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -18,7 +18,7 @@ public class CustomerController {
         this.customerService = customerService;
     }
 
-    @GetMapping("/customers_without_orders")
+    @GetMapping("/customers_without_orders")/***/
     public List<Customer> getCustomersWithoutOrders() throws ParseException {
         return customerService.customersWithoutOrders();
     }

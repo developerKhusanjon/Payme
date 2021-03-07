@@ -4,14 +4,15 @@ package dev.khusanjon.payme.domain;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 @Entity
-public class Customer {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class Customer implements Serializable {
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     @NotBlank
     @Size(max = 14)
@@ -78,11 +79,6 @@ public class Customer {
         this.orders = oders;
     }
 
-    /* Differentiate customers by their countries
-       equalsAndHashCodes are implementing with
-       country field of customer entity
-     */
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -90,11 +86,11 @@ public class Customer {
 
         Customer customer = (Customer) o;
 
-        return country != null ? country.equals(customer.country) : customer.country == null;
+        return id != null ? id.equals(customer.id) : customer.id == null;
     }
 
     @Override
     public int hashCode() {
-        return country != null ? country.hashCode() : 0;
+        return id != null ? id.hashCode() : 0;
     }
 }

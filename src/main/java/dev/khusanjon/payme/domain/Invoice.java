@@ -2,12 +2,13 @@ package dev.khusanjon.payme.domain;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.io.Serializable;
 import java.util.Date;
 
 @Entity
-public class Invoice {
+public class Invoice implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     @OneToOne
     @JoinColumn(name = "ord_id")

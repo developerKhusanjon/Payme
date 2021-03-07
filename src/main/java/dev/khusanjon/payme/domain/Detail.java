@@ -5,12 +5,13 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.io.Serializable;
 
 @Entity
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,property = "id")
-public class Detail {
+public class Detail implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     @ManyToOne
     @JoinColumn(name = "ord_id")
@@ -63,11 +64,11 @@ public class Detail {
 
         Detail detail = (Detail) o;
 
-        return product != null ? product.equals(detail.product) : detail.product == null;
+        return id != null ? id.equals(detail.id) : detail.id == null;
     }
 
     @Override
     public int hashCode() {
-        return product != null ? product.hashCode() : 0;
+        return id != null ? id.hashCode() : 0;
     }
 }

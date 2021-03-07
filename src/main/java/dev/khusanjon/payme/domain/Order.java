@@ -6,14 +6,15 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.io.Serializable;
 import java.util.*;
 
 @Entity
 @Table(name = "ordr")
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,property = "id")
-public class Order {
+public class Order implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     @ManyToOne
     @JoinColumn(name = "cust_id")
@@ -77,7 +78,7 @@ public class Order {
 
         Order order = (Order) o;
 
-        return Objects.equals(id, order.id);
+        return id != null ? id.equals(order.id) : order.id == null;
     }
 
     @Override

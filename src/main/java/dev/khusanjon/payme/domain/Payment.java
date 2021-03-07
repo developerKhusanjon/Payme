@@ -2,12 +2,13 @@ package dev.khusanjon.payme.domain;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.io.Serializable;
 import java.util.Date;
 
 @Entity
-public class Payment {
+public class Payment implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     @ManyToOne
     @JoinColumn(name = "inv_id")
@@ -64,11 +65,11 @@ public class Payment {
 
         Payment payment = (Payment) o;
 
-        return invoice != null ? invoice.equals(payment.invoice) : payment.invoice == null;
+        return id != null ? id.equals(payment.id) : payment.id == null;
     }
 
     @Override
     public int hashCode() {
-        return invoice != null ? invoice.hashCode() : 0;
+        return id != null ? id.hashCode() : 0;
     }
 }

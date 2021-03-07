@@ -21,22 +21,22 @@ public class ProductController {
         this.detailService = detailService;
     }
 
-    @GetMapping("/high_demand_products")
+    @GetMapping("/high_demand_products")/**/
     public List<Map<String,?>> getHighDemandProducts(){
         return detailService.highDemandProducts();
     }
 
-    @GetMapping("/bulk_products")
+    @GetMapping("/bulk_products")/**/
     public List<Map<String,?>> getBulkProducts(){
         return detailService.bulkProducts();
     }
 
-    @GetMapping("/product/list")/***/
+    @GetMapping("/product/list")
     public List<Product> getProductList(){
         return productService.productList();
     }
 
-    @GetMapping("/product/details")/***/
+    @GetMapping("/product/details")
     public Optional<Product> getProductById(@RequestParam Integer product_id){
         return productService.productById(product_id);
     }

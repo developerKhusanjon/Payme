@@ -19,9 +19,7 @@ public class InvoiceService {
     }
 
     public List<Invoice> getExpiredInvoices() {
-        return invoiceRepository.findAll().stream()
-                    .filter(invoice ->
-                            invoice.getIssued().compareTo(invoice.getDue())>0).collect(Collectors.toList());
+        return invoiceRepository.findExpiredInvoices();
     }
 
     public List<WrongInvoice> getWrongDateInvoices() {

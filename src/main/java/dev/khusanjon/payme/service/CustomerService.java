@@ -25,14 +25,7 @@ public class CustomerService {
     }
 
     public List<Customer> customersWithoutOrders() throws ParseException {
-
-        Date d1 = sdformat.parse("2016-01-01");
-        Date d2 = sdformat.parse("2016-12-31");
-
-        return customerRepository.findAll().stream()
-                .filter(customer ->
-                    customer.getOrders().stream().allMatch(order ->
-                        order.getDate().compareTo(d1) < 0 && order.getDate().compareTo(d2) > 0)).collect(Collectors.toList());
+        return customerRepository.findCustomersWithoutOrders();
     }
 
     public List<Map<String,?>> customerLastOrders(){
@@ -55,7 +48,7 @@ public class CustomerService {
                         .anyMatch(order -> order.getDate().compareTo(d1)>0&&order.getDate().compareTo(d2)<0))
                 .collect(groupingBy(identity(), counting()))
                 .entrySet().stream()
-                .map(customerLongEntry -> Map.of(customerLongEntry.getKey().getName(),customerLongEntry.getValue()))
+                .map(customerLongEntry -> Map.of(customerLongEntry.getKey().getCountry(),customerLongEntry.getValue()))
                 .collect(Collectors.toList());
     }
 

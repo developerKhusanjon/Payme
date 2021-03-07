@@ -4,7 +4,9 @@ package dev.khusanjon.payme.domain;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -23,7 +25,7 @@ public class Customer {
     private String phone;
 
     @OneToMany(mappedBy = "customer")
-    private Set<Order> orders = new HashSet<>();
+    private List<Order> orders = new ArrayList<>();
 
     public Customer() {
     }
@@ -68,11 +70,11 @@ public class Customer {
         this.phone = phone;
     }
 
-    public Set<Order> getOrders() {
+    public List<Order> getOrders() {
         return orders;
     }
 
-    public void setOrders(Set<Order> oders) {
+    public void setOrders(List<Order> oders) {
         this.orders = oders;
     }
 

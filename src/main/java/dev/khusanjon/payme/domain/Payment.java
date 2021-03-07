@@ -13,7 +13,8 @@ public class Payment {
     @JoinColumn(name = "inv_id")
     private Invoice invoice;
     @Basic(optional = false)
-    @Column(insertable = false, updatable = false)
+    @Column(insertable = false, updatable = false,
+            columnDefinition = "datetime default '2016/01/01'")
     @Temporal(TemporalType.TIMESTAMP)
     @NotBlank
     private Date time;

@@ -19,12 +19,12 @@ public class OrderController {
         this.orderService = orderService;
     }
 
-    @GetMapping("/orders_without_details")
+    @GetMapping("/orders_without_details")/**/
     public List<Order> getOrdersWithoutDetails() throws ParseException {
         return orderService.ordersWithoutDetail();
     }
 
-    @GetMapping("/orders_without_invoices")/***/
+    @GetMapping("/orders_without_invoices")/**/
     public List<Map<String,?>> getOrdersWithoutInvoices(){
         return orderService.ordersWithoutInvoices();
     }

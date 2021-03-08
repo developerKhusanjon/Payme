@@ -125,18 +125,18 @@ public class BootStrapInitialData implements CommandLineRunner {
         List<Payment> payments = Arrays.asList(
                 new Payment( invoices.get(0), sdformat.parse("2015-11-01"), 15.70),
                 new Payment( invoices.get(1), sdformat.parse("2015-11-01"), 5.70),
-                new Payment( invoices.get(2), sdformat.parse("2015-11-01"), 55.70),
+                new Payment( invoices.get(1), sdformat.parse("2015-11-01"), 55.70),
                 new Payment( invoices.get(3), sdformat.parse("2015-11-01"), 1.70),
                 new Payment( invoices.get(4), sdformat.parse("2015-11-01"), 13.03),
-                new Payment( invoices.get(5), sdformat.parse("2015-11-01"), 15.72),
+                new Payment( invoices.get(1), sdformat.parse("2015-11-01"), 15.72),
                 new Payment( invoices.get(6), sdformat.parse("2015-11-01"), 15.31),
                 new Payment( invoices.get(7), sdformat.parse("2015-11-01"), 23.90),
-                new Payment( invoices.get(8), sdformat.parse("2015-11-01"), 15.00),
-                new Payment( invoices.get(9), sdformat.parse("2015-11-01"), 6.00),
+                new Payment( invoices.get(2), sdformat.parse("2015-11-01"), 15.00),
+                new Payment( invoices.get(3), sdformat.parse("2015-11-01"), 6.00),
                 new Payment( invoices.get(10), sdformat.parse("2015-11-01"), 8.00),
-                new Payment( invoices.get(11), sdformat.parse("2015-11-01"), 7.40),
-                new Payment( invoices.get(12), sdformat.parse("2015-11-01"), 4.50),
-                new Payment( invoices.get(13), sdformat.parse("2015-11-01"), 5.50),
+                new Payment( invoices.get(1), sdformat.parse("2015-11-01"), 7.40),
+                new Payment( invoices.get(2), sdformat.parse("2015-11-01"), 4.50),
+                new Payment( invoices.get(3), sdformat.parse("2015-11-01"), 5.50),
                 new Payment( invoices.get(14), sdformat.parse("2015-11-01"), 1.50)
         );
 

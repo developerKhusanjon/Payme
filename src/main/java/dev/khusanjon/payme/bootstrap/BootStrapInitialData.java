@@ -2,7 +2,6 @@ package dev.khusanjon.payme.bootstrap;
 
 import dev.khusanjon.payme.domain.*;
 import dev.khusanjon.payme.repository.*;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -72,73 +71,73 @@ public class BootStrapInitialData implements CommandLineRunner {
                 new Order( customers.get(0), sdformat.parse("2016-01-01")),
                 new Order( customers.get(1), sdformat.parse("2015-01-01")),
                 new Order( customers.get(2), sdformat.parse("2015-04-11")),
-                new Order( customers.get(3), sdformat.parse("2016-01-23")),
+                new Order( customers.get(1), sdformat.parse("2016-01-23")),
                 new Order( customers.get(4), sdformat.parse("2017-01-12")),
                 new Order( customers.get(5), sdformat.parse("2016-11-01")),
-                new Order( customers.get(6), sdformat.parse("2017-06-11")),
+                new Order( customers.get(1), sdformat.parse("2017-06-11")),
                 new Order( customers.get(7), sdformat.parse("2016-07-07")),
                 new Order( customers.get(8), sdformat.parse("2015-01-08")),
-                new Order( customers.get(9), sdformat.parse("2015-01-28")),
+                new Order( customers.get(1), sdformat.parse("2015-01-28")),
                 new Order( customers.get(10), sdformat.parse("2016-01-18")),
                 new Order( customers.get(11), sdformat.parse("2016-01-19")),
-                new Order( customers.get(12), sdformat.parse("2015-09-01")),
+                new Order( customers.get(1), sdformat.parse("2015-09-01")),
                 new Order( customers.get(13), sdformat.parse("2015-01-09")),
                 new Order( customers.get(14), sdformat.parse("2016-05-15"))
         );
 
         List<Invoice> invoices = Arrays.asList(
                 new Invoice( 40.5, sdformat.parse("2017-02-01"), sdformat.parse("2016-01-01"), orders.get(0)),
-                new Invoice( 40.5, sdformat.parse("2016-01-22"), sdformat.parse("2016-01-01"), orders.get(1)),
-                new Invoice( 40.5, sdformat.parse("2015-11-01"), sdformat.parse("2016-01-01"), orders.get(2)),
-                new Invoice( 40.5, sdformat.parse("2016-10-11"), sdformat.parse("2016-01-01"), orders.get(3)),
-                new Invoice( 40.5, sdformat.parse("2015-01-01"), sdformat.parse("2016-01-01"), orders.get(4)),
-                new Invoice( 40.5, sdformat.parse("2015-07-15"), sdformat.parse("2016-01-01"), orders.get(5)),
-                new Invoice( 40.5, sdformat.parse("2016-01-01"), sdformat.parse("2016-01-01"), orders.get(6)),
-                new Invoice( 40.5, sdformat.parse("2016-01-01"), sdformat.parse("2016-01-01"), orders.get(7)),
-                new Invoice( 40.5, sdformat.parse("2016-01-01"), sdformat.parse("2016-01-01"), orders.get(8)),
-                new Invoice( 40.5, sdformat.parse("2016-01-01"), sdformat.parse("2016-01-01"), orders.get(9)),
-                new Invoice( 40.5, sdformat.parse("2016-01-01"), sdformat.parse("2016-01-01"), orders.get(10)),
-                new Invoice( 40.5, sdformat.parse("2016-01-01"), sdformat.parse("2016-01-01"), orders.get(11)),
-                new Invoice( 40.5, sdformat.parse("2016-01-01"), sdformat.parse("2016-01-01"), orders.get(12)),
-                new Invoice( 40.5, sdformat.parse("2016-01-01"), sdformat.parse("2016-01-01"), orders.get(13)),
-                new Invoice( 40.5, sdformat.parse("2016-01-01"), sdformat.parse("2016-01-01"), orders.get(14))
+                new Invoice( 20.5, sdformat.parse("2016-01-22"), sdformat.parse("2016-05-24"), orders.get(1)),
+                new Invoice( 44.5, sdformat.parse("2015-11-01"), sdformat.parse("2016-04-17"), orders.get(2)),
+                new Invoice( 14.54, sdformat.parse("2016-10-11"), sdformat.parse("2016-01-11"), null),
+                new Invoice( 41.45, sdformat.parse("2015-01-01"), sdformat.parse("2016-08-16"), orders.get(4)),
+                new Invoice( 4.54, sdformat.parse("2015-07-15"), sdformat.parse("2016-02-12"), orders.get(5)),
+                new Invoice( 45.9, sdformat.parse("2015-11-01"), sdformat.parse("2016-09-19"), null),
+                new Invoice( 2.5, sdformat.parse("2015-04-11"), sdformat.parse("2015-03-13"), orders.get(7)),
+                new Invoice( 5.5, sdformat.parse("2017-02-22"), sdformat.parse("2017-10-10"), orders.get(8)),
+                new Invoice( 32.5, sdformat.parse("2016-07-07"), sdformat.parse("2016-11-13"), null),
+                new Invoice( 3.5, sdformat.parse("2015-08-18"), sdformat.parse("2016-02-28"), orders.get(10)),
+                new Invoice( 6.5, sdformat.parse("2016-01-01"), sdformat.parse("2015-04-14"), orders.get(11)),
+                new Invoice( 13.5, sdformat.parse("2016-05-15"), sdformat.parse("2016-06-16"), null),
+                new Invoice( 9.5, sdformat.parse("2016-05-05"), sdformat.parse("2016-05-19"), orders.get(13)),
+                new Invoice( 2.5, sdformat.parse("2016-04-14"), sdformat.parse("2016-05-05"), orders.get(14))
         );
 
 
         List<Detail> details = Arrays.asList(
                 new Detail(orders.get(0), products.get(0), (short) 32),
-                new Detail( orders.get(1), products.get(1), (short) 32),
-                new Detail( orders.get(2), products.get(2), (short) 32),
-                new Detail( orders.get(3), products.get(3), (short) 32),
-                new Detail( orders.get(4), products.get(4), (short) 32),
-                new Detail( orders.get(5), products.get(4), (short) 32),
-                new Detail( orders.get(6), products.get(3), (short) 32),
-                new Detail( orders.get(7), products.get(0), (short) 32),
-                new Detail( orders.get(8), products.get(2), (short) 32),
-                new Detail( orders.get(9), products.get(1), (short) 32),
-                new Detail( orders.get(10), products.get(2), (short) 32),
-                new Detail(orders.get(11), products.get(4), (short) 32),
-                new Detail( orders.get(12), products.get(1), (short) 32),
-                new Detail( orders.get(13), products.get(1), (short) 32),
-                new Detail( orders.get(14), products.get(4), (short) 32)
+                new Detail( orders.get(1), products.get(1), (short) 2),
+                new Detail( orders.get(2), products.get(1), (short) 3),
+                new Detail( null, products.get(3), (short) 7),
+                new Detail( orders.get(4), products.get(1), (short) 8),
+                new Detail( orders.get(5), products.get(1), (short) 9),
+                new Detail( null, products.get(1), (short) 12),
+                new Detail( orders.get(7), products.get(0), (short) 92),
+                new Detail( orders.get(8), products.get(1), (short) 29),
+                new Detail( null, products.get(1), (short) 21),
+                new Detail( orders.get(10), products.get(1), (short) 312),
+                new Detail(orders.get(11), products.get(1), (short) 6),
+                new Detail( null, products.get(1), (short) 4),
+                new Detail( orders.get(13), products.get(1), (short) 5),
+                new Detail( orders.get(14), products.get(1), (short) 3)
         );
 
         List<Payment> payments = Arrays.asList(
                 new Payment( invoices.get(0), sdformat.parse("2015-11-01"), 15.70),
-                new Payment( invoices.get(1), sdformat.parse("2015-11-01"), 15.70),
-                new Payment( invoices.get(2), sdformat.parse("2015-11-01"), 15.70),
-                new Payment( invoices.get(3), sdformat.parse("2015-11-01"), 15.70),
-                new Payment( invoices.get(4), sdformat.parse("2015-11-01"), 15.70),
-                new Payment( invoices.get(5), sdformat.parse("2015-11-01"), 15.70),
-                new Payment( invoices.get(6), sdformat.parse("2015-11-01"), 15.70),
-                new Payment( invoices.get(7), sdformat.parse("2015-11-01"), 15.70),
-                new Payment( invoices.get(8), sdformat.parse("2015-11-01"), 15.70),
-                new Payment( invoices.get(9), sdformat.parse("2015-11-01"), 15.70),
-                new Payment( invoices.get(10), sdformat.parse("2015-11-01"), 15.70),
-                new Payment( invoices.get(11), sdformat.parse("2015-11-01"), 15.70),
-                new Payment( invoices.get(12), sdformat.parse("2015-11-01"), 15.70),
-                new Payment( invoices.get(13), sdformat.parse("2015-11-01"), 15.70),
-                new Payment( invoices.get(14), sdformat.parse("2015-11-01"), 15.70)
+                new Payment( invoices.get(1), sdformat.parse("2015-11-01"), 5.70),
+                new Payment( invoices.get(2), sdformat.parse("2015-11-01"), 55.70),
+                new Payment( invoices.get(3), sdformat.parse("2015-11-01"), 1.70),
+                new Payment( invoices.get(4), sdformat.parse("2015-11-01"), 13.03),
+                new Payment( invoices.get(5), sdformat.parse("2015-11-01"), 15.72),
+                new Payment( invoices.get(6), sdformat.parse("2015-11-01"), 15.31),
+                new Payment( invoices.get(7), sdformat.parse("2015-11-01"), 23.90),
+                new Payment( invoices.get(8), sdformat.parse("2015-11-01"), 15.00),
+                new Payment( invoices.get(9), sdformat.parse("2015-11-01"), 6.00),
+                new Payment( invoices.get(10), sdformat.parse("2015-11-01"), 8.00),
+                new Payment( invoices.get(11), sdformat.parse("2015-11-01"), 7.40),
+                new Payment( invoices.get(12), sdformat.parse("2015-11-01"), 4.50),
+                new Payment( invoices.get(13), sdformat.parse("2015-11-01"), 5.50),
+                new Payment( invoices.get(14), sdformat.parse("2015-11-01"), 1.50)
         );
 
         categoryRepository.saveAll(categories);

@@ -41,6 +41,7 @@ public class PaymentService {
         Integer inv_id = payload.get("Invoice_id");
 
         if (invoiceService.invoiceById(inv_id).isPresent()){
+            status="SUCCESS";
             payment.setInvoice(invoiceService.invoiceById(inv_id).get());
             payment.setAmount(invoiceService.invoiceById(inv_id).get().getAmount());
             payment.setTime(new Date());

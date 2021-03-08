@@ -53,7 +53,9 @@ public class OrderService {
         Integer invoice_number = -1;
 
         if (customerService.customerById(order.getCustomer_id()).isPresent()&&productService.productById(order.getProduct_id()).isPresent()){
+            int id = orderRepository.findAll().size()+1;
             status_string = "SUCCESS";
+            order1.setId(id);
             order1.setCustomer(customerService.customerById(order.getCustomer_id()));
             order1.setDate(new Date());
             Invoice invoice = new Invoice();

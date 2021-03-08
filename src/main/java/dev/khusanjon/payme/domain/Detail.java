@@ -11,7 +11,7 @@ import java.io.Serializable;
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,property = "id")
 public class Detail implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @ManyToOne
     @JoinColumn(name = "ord_id")
@@ -23,6 +23,12 @@ public class Detail implements Serializable {
     private Short quantity;
 
     public Detail() {
+    }
+
+    public Detail( Order order, Product product, @NotBlank Short quantity) {
+        this.order = order;
+        this.product = product;
+        this.quantity = quantity;
     }
 
     public Integer getId() {
@@ -64,11 +70,11 @@ public class Detail implements Serializable {
 
         Detail detail = (Detail) o;
 
-        return id != null ? id.equals(detail.id) : detail.id == null;
+        return product != null ? product.equals(detail.product) : detail.product == null;
     }
 
     @Override
     public int hashCode() {
-        return id != null ? id.hashCode() : 0;
+        return product != null ? product.hashCode() : 0;
     }
 }

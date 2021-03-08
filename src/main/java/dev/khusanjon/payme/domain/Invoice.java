@@ -5,10 +5,13 @@ import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 import java.util.Date;
 
+import static javax.persistence.CascadeType.MERGE;
+import static javax.persistence.CascadeType.PERSIST;
+
 @Entity
 public class Invoice implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @OneToOne
     @JoinColumn(name = "ord_id")
@@ -24,6 +27,13 @@ public class Invoice implements Serializable {
     private Date due;
 
     public Invoice() {
+    }
+
+    public Invoice(@NotBlank Double amount, @NotBlank Date issued, @NotBlank Date due,Order order) {
+        this.amount = amount;
+        this.issued = issued;
+        this.due = due;
+        this.order = order;
     }
 
     public Integer getId() {

@@ -12,7 +12,7 @@ import java.util.Set;
 
 @Entity
 public class Customer implements Serializable {
-    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @NotBlank
     @Size(max = 14)
@@ -29,6 +29,13 @@ public class Customer implements Serializable {
     private List<Order> orders = new ArrayList<>();
 
     public Customer() {
+    }
+
+    public Customer(@NotBlank @Size(max = 14) String name, @NotBlank @Size(max = 3) String country, String address, @Size(max = 50) String phone) {
+        this.name = name;
+        this.country = country;
+        this.address = address;
+        this.phone = phone;
     }
 
     public Integer getId() {
@@ -79,6 +86,11 @@ public class Customer implements Serializable {
         this.orders = oders;
     }
 
+   /* Differentiate customers by their countries
+       equalsAndHashCodes are implementing with
+       country field of customer entity
+     */
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -86,11 +98,11 @@ public class Customer implements Serializable {
 
         Customer customer = (Customer) o;
 
-        return id != null ? id.equals(customer.id) : customer.id == null;
+        return country != null ? country.equals(customer.country) : customer.country == null;
     }
 
     @Override
     public int hashCode() {
-        return id != null ? id.hashCode() : 0;
+        return country != null ? country.hashCode() : 0;
     }
 }

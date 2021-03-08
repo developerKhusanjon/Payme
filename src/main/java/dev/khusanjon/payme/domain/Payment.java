@@ -8,7 +8,7 @@ import java.util.Date;
 @Entity
 public class Payment implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @ManyToOne
     @JoinColumn(name = "inv_id")
@@ -24,6 +24,12 @@ public class Payment implements Serializable {
     private Double amount;
 
     public Payment() {
+    }
+
+    public Payment(Invoice invoice, @NotBlank Date time, @NotBlank Double amount) {
+        this.invoice = invoice;
+        this.time = time;
+        this.amount = amount;
     }
 
     public Integer getId() {
@@ -65,11 +71,11 @@ public class Payment implements Serializable {
 
         Payment payment = (Payment) o;
 
-        return id != null ? id.equals(payment.id) : payment.id == null;
+        return invoice != null ? invoice.equals(payment.invoice) : payment.invoice == null;
     }
 
     @Override
     public int hashCode() {
-        return id != null ? id.hashCode() : 0;
+        return invoice != null ? invoice.hashCode() : 0;
     }
 }

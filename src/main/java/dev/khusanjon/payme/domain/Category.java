@@ -6,12 +6,16 @@ import java.io.Serializable;
 
 @Entity
 public class Category implements Serializable {
-    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+        @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Size(max = 250)
     private String name;
 
     public Category() {
+    }
+
+    public Category(@Size(max = 250) String name) {
+        this.name = name;
     }
 
     public Integer getId() {

@@ -9,12 +9,15 @@ import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 import java.util.*;
 
+import static javax.persistence.CascadeType.MERGE;
+import static javax.persistence.CascadeType.PERSIST;
+
 @Entity
 @Table(name = "ordr")
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,property = "id")
 public class Order implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @ManyToOne
     @JoinColumn(name = "cust_id")
@@ -29,6 +32,11 @@ public class Order implements Serializable {
     private Invoice invoice;
 
     public Order() {
+    }
+
+    public Order( Customer customer, @NotBlank Date date) {
+        this.customer = customer;
+        this.date = date;
     }
 
     public Invoice getInvoice() {

@@ -25,6 +25,15 @@ public class Product {
     public Product() {
     }
 
+    public Product(@Size(max = 10) String name, @Size(max = 20) String description, @Size(max = 1024) String photo, Double price,  Category category, Integer product_code) {
+        this.name = name;
+        this.category = category;
+        this.description = description;
+        this.price = price;
+        this.photo = photo;
+        this.product_code = product_code;
+    }
+
     public Integer getId() {
         return id;
     }
